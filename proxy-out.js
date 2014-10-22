@@ -64,6 +64,7 @@ http.request = function(options, callback) {
   if(_whitelist.indexOf(options.host) < 0) {
     // We don't want to interfere with CONNECT requests
     if (options && options.method !== 'CONNECT') {
+      options.protocol = options.protocol || 'http:';
       options = _proxifyOptions(options);
     }
   }
